@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import {useRef } from "react";
 import { FaRocket, FaShieldAlt, FaMobileAlt, FaCode } from "react-icons/fa";
-// import gsap from "gsap";
+
 
 const features = [
   {
@@ -26,19 +26,11 @@ const features = [
 ];
 
 const Features = () => {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef();
   const cardRefs = useRef([]);
 
-//   useEffect(() => {
-//     // Animate each card with GSAP stagger
-//     gsap.from(cardRefs.current, {
-//       opacity: 0,
-//       y: 50,
-//       duration: 1,
-//       ease: "power3.out",
-//       stagger: 0.2,
-//     });
-//   }, []);
+
+  
 
   return (
     <section
@@ -56,10 +48,7 @@ const Features = () => {
           {features.map((feature, i) => (
             <div
               key={i}
-              ref={(el) => {
-                // Store each card DOM element into cardRefs
-                if (el) cardRefs.current[i] = el;
-              }}
+              ref={(el) => (cardRefs.current[i] = el)}
               className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-md hover:shadow-xl transition"
             >
               <div className="mb-4">{feature.icon}</div>

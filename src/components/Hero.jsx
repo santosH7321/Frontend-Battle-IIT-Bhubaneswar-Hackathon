@@ -1,24 +1,31 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import image1 from "../assets/image1.png";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const containerRef = useRef();
 
   useEffect(() => {
-  const ctx = gsap.context(() => {
-    gsap.from(containerRef.current, {
-      opacity: 0,
-      y: 40,
-      duration: 1.2,
-      ease: "power3.out",
+    const ctx = gsap.context(() => {
+      gsap.from(containerRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          markers: false, 
+        },
+        opacity: 0,
+        y: 60,
+        duration: 1,
+        ease: "power3.out",
+      });
     });
-  });
 
-  return () => ctx.revert(); 
-}, []);
-
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section

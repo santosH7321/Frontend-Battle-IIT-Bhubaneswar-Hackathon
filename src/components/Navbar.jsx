@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,19 +47,42 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(navRef.current, {
-        y: -80,
-        autoAlpha: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-    });
-    return () => ctx.revert();
-  }, []);
+  const ctx = gsap.context(() => {
+    const nav = navRef.current;
+
+    gsap.fromTo(
+      nav,
+      { y: 0 },
+      {
+        y: -100,
+        duration: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          toggleActions: "play none none reverse",
+          onUpdate: (self) => {
+            if (self.direction === -1) {
+              // scrolling up → show navbar
+              gsap.to(nav, { y: 0, duration: 0.4 });
+            } else {
+              // scrolling down → hide navbar
+              gsap.to(nav, { y: -100, duration: 0.4 });
+            }
+          },
+        },
+      }
+    );
+  });
+
+  return () => ctx.revert();
+}, []);
+
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-gray-900 dark:via-gray-800 dark:to-black shadow-lg">
+    <header className="fixed top-0 w-full z-50 backdrop-blur bg-opacity-80 transition-all duration-300 ..."
+>
       <nav
         ref={navRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16"

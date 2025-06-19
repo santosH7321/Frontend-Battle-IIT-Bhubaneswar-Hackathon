@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import Features from "./components/Features";
 import Demo from "./components/Demo";
 import Testimonial from "./components/Testimonial";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -15,7 +17,8 @@ const App = () => {
         <Features />
         <Demo />
         <Testimonial />
-
+        <Contact />
+        <Footer />
       </main>
     </>
   );

@@ -5,7 +5,7 @@ const Demo = () => {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
 
-   useEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(sectionRef.current, {
         opacity: 0,
@@ -16,32 +16,36 @@ const Demo = () => {
 
       gsap.from(videoRef.current, {
         opacity: 0,
-        scale: 0.9,
+        scale: 0.95,
         duration: 1,
-        delay: 0.5,
+        delay: 0.4,
         ease: "back.out(1.7)",
       });
-    }, sectionRef); 
+    }, sectionRef);
 
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
+
   return (
     <section
       id="demo"
       ref={sectionRef}
-      className="min-h-screen px-6 py-20 bg-white dark:bg-black text-black dark:text-white flex flex-col items-center justify-center"
+      className="min-h-screen px-6 py-24 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-black text-black dark:text-white flex flex-col items-center justify-center"
     >
-      <div className="max-w-4xl text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">See It in Action</h2>
-        <p className="text-gray-600 dark:text-gray-300 text-lg">
-          Watch the demo below to understand how LaunchX can elevate your product.
+      <div className="max-w-4xl text-center mb-16">
+        <h2 className="text-4xl font-extrabold text-blue-700 dark:text-yellow-400 mb-4">
+          🚀 See It in Action
+        </h2>
+        <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+          Watch this quick demo to see how LaunchX powers fast, smooth, and scalable product launches.
         </p>
       </div>
 
-      <div ref={videoRef} className="w-full max-w-3xl aspect-video shadow-xl rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700">
+      <div
+        ref={videoRef}
+        className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl backdrop-blur-lg bg-white/80 dark:bg-white/5"
+      >
         <iframe
-          width="100%"
-          height="100%"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ"
           title="Demo Video"
           frameBorder="0"

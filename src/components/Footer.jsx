@@ -26,7 +26,7 @@ const Footer = () => {
           <h4 className="text-lg font-semibold">Connect with us</h4>
           <div className="flex justify-center md:justify-end gap-4 text-2xl">
             <a
-              href="https://twitter.com"
+              href="https://x.com/santosH_sky01"
               target="_blank"
               rel="noreferrer"
               className="hover:text-blue-500 hover:scale-110 transition-transform"
@@ -34,7 +34,7 @@ const Footer = () => {
               <FaTwitter />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/santosH7321"
               target="_blank"
               rel="noreferrer"
               className="hover:text-gray-800 dark:hover:text-white hover:scale-110 transition-transform"
@@ -42,7 +42,7 @@ const Footer = () => {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/santosh7321/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-blue-700 hover:scale-110 transition-transform"

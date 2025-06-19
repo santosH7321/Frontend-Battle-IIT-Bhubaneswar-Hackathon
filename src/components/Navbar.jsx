@@ -87,7 +87,7 @@ const Navbar = () => {
         ref={navRef}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16"
       >
-        <a href="#home" className="text-white text-2xl font-extrabold tracking-tight">
+        <a href="#home" className="text-yellow-300 text-2xl font-extrabold tracking-tight">
           🚀 LaunchX
         </a>
 
